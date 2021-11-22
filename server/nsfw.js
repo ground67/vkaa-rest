@@ -32,7 +32,7 @@ router.get('/doujindesuSearch', async (req, res) => {
 })
 router.get('/nhentaipdf', async (req, res) => {
 	var code = req.query.code
-	var nhres = `https://tyz-api.herokuapp.com/nsfw/nhcode?query=${code}`
+	var nhres = `https://vkaa-rest.herokuapp.com/nsfw/nhcode?query=${code}`
 	res.json({
 		result: nhres,
 		note: 'dosa di tanggung sendiri!'
@@ -41,7 +41,7 @@ router.get('/nhentaipdf', async (req, res) => {
 router.get('/nhcode', async (req, res) => {
         try {
 	var query = req.query.query
-	let data = await axios.get('https://vka-api.herokuapp.com/nsfw/nHentai?code='+query)
+	let data = await axios.get('https://vkaa-rest.herokuapp.com/nsfw/nHentai?code='+query)
     	let restjson = data.data.result.pages
 	let title = data.data.result.title
     	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
